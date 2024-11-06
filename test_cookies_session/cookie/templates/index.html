@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies & Sessions</title>
+
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_css/my_style.css' %}">
+</head>
+<body>
+    <form class="myform" action="/cookies" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <table class="table" id="mytable">
+        
+        <thead>
+          <tr>
+            <th scope="col" class="table-title">Cookies Table</th>
+          </tr>
+            <tr>
+              <th scope="col">Email</th>
+              <th scope="col">Password</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+
+            {% if email in request.COOKIES %}
+            <td>{{ request.COOKIES.email }}</td>
+            {% endif %}
+
+            {% if 'password' in request.COOKIES %}
+            <td>{{ request.COOKIES.password }}</td>
+            {% endif %}
+
+          </tr>
+        </tbody>
+      </table>
+
+    <script src="{% static 'js/bootstrap.js' %}" ></script>
+</body>
+</html>

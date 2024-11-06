@@ -1,0 +1,9 @@
+.myform, #mytable {
+    margin: 10vh auto;
+    width: 40vh;
+}
+
+.table-title {
+
+    font-size: 4vh;
+}
